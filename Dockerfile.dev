@@ -1,0 +1,10 @@
+FROM python:3.10-alpine
+
+WORKDIR '/app'
+
+RUN pip install django
+RUN django-admin startproject docker_test
+
+COPY . .
+
+CMD ["python", "./docker_test/manage.py", "runserver", "0.0.0.0:8000"]
